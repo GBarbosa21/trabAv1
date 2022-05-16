@@ -35,37 +35,20 @@
 			</tr>
 		</table>
 		
-		<h1>Alterar produto</h1>
+		<h1>Incluir Excluir </h1>
 		
-		<form action="exProvaAlterar1.php" method=POST>
+		<form action="exProvaExcluir.php" method=POST>
 		ID: <input type=text name="id" value=''> <br>
-		Nome: <input type=text name="nome" value=''> <br>
-		Preco: <input type=text name="preco"> <br>
-		Codigo de Barras: <input type=text name="codBarras"> <br>
-		Descricao: <input type=text name="descricao"> <br>
-		url da Imagem:<input type=text name="urlImg"> <br>
-		Quantidade: <input type=text name="quantidade"> <br>
-		peso (em KG): <input type=text name="peso"> <br>
 		<br><br>
-		<input type="submit" value="Alterar">
+		<input type="submit" value="excluir">
 		</form>
 		
 		<?php
 		if ($_SERVER["REQUEST_METHOD"] == "POST") {
 			$temp = $_POST["id"];
-			$nome = $_POST["nome"];
-			$preco = $_POST["preco"];
-			$codBarras = $_POST["codBarras"];
-			$descricao = $_POST["descricao"];
-			$urlImg = $_POST["urlImg"];
-			$quantidade = $_POST["quantidade"];
-			$peso = $_POST["peso"];
-				
+			
 		$arquivoProduto = fopen("Produtos.txt", "r")  or die("arquivo com problemas");
 		$arquivoProduto2 = fopen("Produtos2.txt", "w")  or die("arquivo com problemas");
-		
-		$linha = $temp . ";" . $nome . ";" . $preco . ";" . $codBarras . ";" . $descricao . ";" . $urlImg . ";" . $quantidade . ";" . $peso . "\n";
-		fwrite($arquivoProduto2, $linha);
 		
 		while (list($id, $nome, $preco, $codBarras, $descricao, $urlImg, $quantidade, $peso) = fgetcsv($arquivoProduto, 1000, ";"))
 		{
@@ -74,7 +57,6 @@
 			fwrite($arquivoProduto2, $linha);
 			}
 		}
-		
 			fclose($arquivoProduto);
 			fclose($arquivoProduto2);
 			

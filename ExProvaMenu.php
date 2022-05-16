@@ -3,23 +3,23 @@
 	<head>
 		<meta charset="UTF-8">
 	</head>
-
 	<body>
 		<h1>Menu Principal</h1>
 		
 		<table>
 			<tr>
 				<th>
-				Incluir produto
+				<a href="exProvaIncluir.php"> Incluir produto </a>
 				</th>
 			</tr>
 			<tr>
 				<th>
-				Alterar produto
+				<a href="exProvaAlterar1.php"> Alterar produto <a>
 				</th>
+			</tr>
 			<tr>
-				<th>
-				Listar todos produtos
+				<th">
+				<a href="exProvaListarTodos.php"> Listar todos produtos</a>
 				</th>
 			</tr>
 			<tr>

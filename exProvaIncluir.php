@@ -1,7 +1,6 @@
 <?php
 	if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		$nome = $_POST["nome"];
-		$codigo = $_POST["codigo"];
 		$preco = $_POST["preco"];
 		$codBarras = $_POST["codBarras"];
 		$descricao = $_POST["descricao"];
@@ -10,18 +9,17 @@
 		$peso = $_POST["peso"];
 		
 		if (!file_exists("Produtos.txt")) {
-		$cabecalho = "Nome;Codigo;Preco;Codigo de Barras;Descricao;Url da Imgaem;Quantidade; Peso; \n";
+		$cabecalho = "id;Nome;Preco;Codigo de Barras;Descricao;Url da Imgaem;Quantidade; Peso; \n";
 		$arquivoProdutos = fopen("Produtos.txt", "w");
-		fwrite($arquivoProdutosw,$cabecalho);
-		fclose($arquivoAluno);
+		fwrite($arquivoProdutos,$cabecalho);
+		fclose($arquivoProdutos);
 		}
-		
 		$arquivoProdutos = fopen("Produtos.txt", "a") or die("arquivo com problemas");
-		$linha = $nome . ";" . $codigo . ";" . $preco . ";" . $codBarras . ";" . $descricao . ";" . $urlImg . ";" . $quantidade . ";" . $peso . "\n";
+		$id = uniqid();
+		$linha = $id . ";" . $nome . ";" . $preco . ";" . $codBarras . ";" . $descricao . ";" . $urlImg . ";" . $quantidade . ";" . $peso . "\n";
 		fwrite($arquivoProdutos,$linha);
 		fclose($arquivoProdutos);
 	}
-		
 ?>
 
 <!DOCTYPE html>
@@ -36,27 +34,27 @@
 		<table>
 			<tr>
 				<th>
-				Incluir produto
+				<a href="exProvaIncluir.php"> Incluir produto </a>
 				</th>
 			</tr>
 			<tr>
 				<th>
-				Alterar produto
+				<a href="exProvaAlterar1.php"> Alterar produto <a>
+				</th>
+			</tr>
+			<tr>
+				<th">
+				<a href="exProvaListarTodos.php"> Listar todos produtos</a>
 				</th>
 			</tr>
 			<tr>
 				<th>
-				Listar todos produtos
+				<a href="exProvaListarUm.php"> Listar um produto </a>
 				</th>
 			</tr>
 			<tr>
 				<th>
-				Listar um produto
-				</th>
-			</tr>
-			<tr>
-				<th>
-				Excluir produto
+				<a href="exProvaExcluir.php">Excluir produto</a>
 				</th>
 			</tr>
 		</table>
@@ -65,7 +63,6 @@
 		
 		<form action="exProvaIncluir.php" method=POST>
 		Nome: <input type=text name="nome" value=''> <br>
-		Codigo: <input type=text name="codigo" value=''> <br>
 		Preco: <input type=text name="preco"> <br>
 		Codigo de Barras: <input type=text name="codBarras"> <br>
 		Descricao: <input type=text name="descricao"> <br>
